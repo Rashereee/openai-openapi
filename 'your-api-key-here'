@@ -1,0 +1,44 @@
+# Install the openai library
+!pip install openai
+
+# Import the openai library
+import openai
+
+# Set your OpenAI API key
+openai.api_key = 'your-api-key-here'
+
+# Function to solve math problems
+def solve_math_problem(problem):
+    prompt = f"Solve the following math problem:\n\n{problem}\n\nProvide a detailed solution."
+    
+    response = openai.Completion.create(
+        engine="text-davinci-003", # Choose the appropriate engine
+        prompt=prompt,
+        max_tokens=150
+    )
+    
+    return response.choices[0].text.strip()
+
+# Function to solve physics problems
+def solve_physics_problem(problem):
+    prompt = f"Solve the following physics problem:\n\n{problem}\n\nProvide a detailed solution."
+    
+    response = openai.Completion.create(
+        engine="text-davinci-003", # Choose the appropriate engine
+        prompt=prompt,
+        max_tokens=150
+    )
+    
+    return response.choices[0].text.strip()
+
+# Example math problem
+math_problem = "Calculate the integral of x^2 from 0 to 2."
+math_solution = solve_math_problem(math_problem)
+print("Math Problem Solution:")
+print(math_solution)
+
+# Example physics problem
+physics_problem = "A ball is thrown vertically upward with an initial velocity of 15 m/s. Calculate the maximum height reached by the ball."
+physics_solution = solve_physics_problem(physics_problem)
+print("\nPhysics Problem Solution:")
+print(physics_solution)
